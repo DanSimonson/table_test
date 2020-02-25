@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function StarWarsHooksBased() {
-  //const [characterObject, setCharacterObject] = useState({})
-
   const [starShips, setStarShips] = useState({});
 
   //componendDidMount equivalent
