@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-//import "./styles.css";
-
-// https://swapi.co/api/starships/?format=json
-
 class StarWarsClassBased extends Component {
   constructor(props) {
     super(props);
@@ -14,44 +10,19 @@ class StarWarsClassBased extends Component {
     };
   }
   componentDidMount() {
-    /*let tempArray = [];
-    let data;
-    axios.get(`https://swapi.co/api/starships/?format=json`).then(res => {
-      data = res.data.results;
-      tempArray.push(...data);
-    });
-    this.setState({ starShips: tempArray }, () => {
-      //console.log("this.state.starShips: ", this.state.starShips);
-    });*/
     this.loadStarShips();
   }
   loadStarShips = () => {
-    let tempArray = [];
-    let data;
     axios.get(`https://swapi.co/api/starships/?format=json`).then(res => {
-      //data = res.data.results;
-      //tempArray.push(...data);
       this.setState({ starShips: res.data.results }, () => {
         this.setState({ loading: false });
       });
     });
-
-    /*this.setState({ starShips: tempArray }, () => {
-      //console.log("this.state.starShips: ", this.state.starShips);
-      this.setState({ loading: false });
-    });*/
   };
 
   render() {
-    //{isLoggedIn ? <button>Logout</button> : <button>Login</button>}
-    //const { starShips } = this.state;
-    //console.log("starShips: ", starShips);
-    let { loading, starShips } = this.state;
-    //console.log("loading: ", loading);
-    let tempArray = starShips;
-    console.log("tempArray: ", tempArray);
-    console.log("loading: ", loading);
-    console.log("starShips: ", starShips);
+    const { loading, starShips } = this.state;
+
     return (
       <div>
         {loading ? (
@@ -60,13 +31,17 @@ class StarWarsClassBased extends Component {
           <table>
             <thead>
               <tr>
-                <th>header</th>
+                <th>NAME</th>
+                <th>MODEL</th>
+                <th>MANUFACTURER</th>
               </tr>
             </thead>
             <tbody>
-              {this.state.starShips.map((row, index) => (
-                <tr>
+              {starShips.map((row, index) => (
+                <tr key={row.name}>
                   <td>{row.name}</td>
+                  <td>{row.model}</td>
+                  <td>{row.manufacturer}</td>
                 </tr>
               ))}
             </tbody>
