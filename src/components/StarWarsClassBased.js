@@ -25,27 +25,30 @@ class StarWarsClassBased extends Component {
 
     return (
       <div>
+        <h1>CLASS COMPONENT BASED STAR SHIPS TABLE</h1>
         {loading ? (
           <h1>loading</h1>
         ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>NAME</th>
-                <th>MODEL</th>
-                <th>MANUFACTURER</th>
-              </tr>
-            </thead>
-            <tbody>
-              {starShips.map((row, index) => (
-                <tr key={row.name}>
-                  <td>{row.name}</td>
-                  <td>{row.model}</td>
-                  <td>{row.manufacturer}</td>
+          <div className="centerMe">
+            <table>
+              <thead>
+                <tr>
+                  <th>NAME</th>
+                  <th>MODEL</th>
+                  <th>MANUFACTURER</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {starShips.map((row, index) => (
+                  <tr key={row.name}>
+                    <td>{row.name}</td>
+                    <td>{row.model}</td>
+                    <td>{row.manufacturer}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         )}
       </div>
     );
